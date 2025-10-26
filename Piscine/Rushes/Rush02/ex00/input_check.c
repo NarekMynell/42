@@ -34,18 +34,20 @@ int is_valid_input(const int args_count, const char **args, const char **number_
 {
     if(args_count != 2 && args_count != 3)
         return 0;
+    int valid_number;
+    int dic_exist;
 
     if(args_count == 2)
     {
-        *number_str = args[1];
         *dict_path = "numbers.dict";
-        return is_valid_number(args[1]);
+        valid_number = is_valid_number(args[1]);
+        if(valid_number == 1)
+            *number_str = args[1];
+        return valid_number;
     }
     
     if(args_count == 3)
     {
-        int valid_number;
-        int dic_exist;
         valid_number = is_valid_number(args[2]);
         dic_exist = does_file_exist(args[1]);
 

@@ -11,13 +11,10 @@ int main(const int argc, const char **argv)
 
     if (!is_valid_input(argc, argv, &number_str, &dict_path))
     {
-        if(!number_str)
-        {
-            if(!number_str)
-                print_num_error();
-            else if(!dict_path)
-                print_dict_error();
-        }
+        if(number_str == NULL)
+            print_num_error();
+        else if(dict_path == NULL)
+            print_dict_error();
         return 0;
     }
     char *builded_num = NULL;
